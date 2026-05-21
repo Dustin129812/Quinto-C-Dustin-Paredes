@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 
 
 
@@ -7,6 +7,13 @@ export const useCalculator = () => {
   const [prevNumber, setPrevNumber] = useState("0")
   const [lastOperation, setLastOperation] = useState("");
   const [simbol, setSimbol] = useState('')
+
+  const clean=()=>{
+    setNumber("0")
+    setPrevNumber("0")
+    setLastOperation("")
+    setSimbol("")
+  }
 
   const lastNumber = () => {
 
@@ -21,21 +28,34 @@ export const useCalculator = () => {
 
   const suma = () => {
     lastNumber()
+    if (lastOperation !== "") {
+    calculateResult();
+  }
     setSimbol('+')
     setLastOperation("suma")
   }
   const resta = () => {
     lastNumber()
+    if (lastOperation !== "") {
+    calculateResult();
+  }
     setSimbol('-')
     setLastOperation("resta")
   }
   const multi = () => {
     lastNumber()
+    if (lastOperation !== "") {
+    calculateResult();
+  }
     setSimbol('x')
     setLastOperation("multi")
   }
   const division = () => {
     lastNumber()
+    
+    if (lastOperation !== "") {
+      calculateResult();
+    }
     setSimbol('/')
     setLastOperation("div")
   }
@@ -57,6 +77,7 @@ export const useCalculator = () => {
         return num2 * num1;
 
       case "div":
+        if (num1 === 0) return 0
         return num2 / num1;
 
       default:
@@ -66,8 +87,9 @@ export const useCalculator = () => {
 }
 const calculateResult = () => {
   const result = subResult();
+  if (result === undefined) return;
   setNumber(`${result}`);
-  setPrevNumber('0');
+  setPrevNumber(`${result}`);
 }
 
 
@@ -92,7 +114,8 @@ return {
   resta,
   multi,
   division,
-  calculateResult
+  calculateResult,
+  clean
 
 }
 

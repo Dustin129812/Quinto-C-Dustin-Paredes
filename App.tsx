@@ -6,7 +6,7 @@ import { useCalculator } from './hooks/useCalculator';
 export default function App() {
   const { number,
     buildNumber,
-    prevNumber, suma, resta, division, multi, simbol, calculateResult
+    prevNumber, suma, resta, division, multi, simbol, calculateResult, clean
   } = useCalculator();
   return (
     <View style={styles.container}>
@@ -38,9 +38,12 @@ export default function App() {
       <View style={styles.content}>
         <CalculatorButton lable='0' onPress={() => { buildNumber("0") }}></CalculatorButton>
         <CalculatorButton lable='.' onPress={() => { buildNumber(".") }}></CalculatorButton>
-        <CalculatorButton lable='/' onPress={() => { division() }}></CalculatorButton>
         <CalculatorButton lable='=' onPress={() => { calculateResult() }}></CalculatorButton>
+        <CalculatorButton lable='/' onPress={() => { division() }}></CalculatorButton>
         <StatusBar style="auto" />
+      </View>
+      <View style={styles.content}>
+        <CalculatorButton lable='del' onPress={() => { clean() }}></CalculatorButton>
       </View>
       <StatusBar style="auto" />
     </View>

@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
 content:{
   flex:1,
   padding:20,
-  alignItems:"baseline"
+  alignItems:"baseline",
+  backgroundColor:'#E6D693',
+  borderRadius:'40%',
 }
 })
