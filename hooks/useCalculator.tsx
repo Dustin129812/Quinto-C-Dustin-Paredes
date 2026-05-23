@@ -32,7 +32,7 @@ export const useCalculator = () => {
 
   const suma = () => {
     lastNumber()
-    if (lastOperation !== "") {
+    if (lastOperation !== "" ) {
       calculateResult();
     }
     setSimbol('+')
@@ -56,8 +56,9 @@ export const useCalculator = () => {
   }
   const division = () => {
     lastNumber()
+    if(prevNumber=='0')return;
 
-    if (lastOperation !== "") {
+    if (lastOperation !== "" ) {
       calculateResult();
     }
     setSimbol('/')
