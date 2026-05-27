@@ -27,33 +27,32 @@ export default function App() {
           <Text style={styles.textR} numberOfLines={1}>{prevNumber}</Text>
         </View>
         <View style={styles.content}>
-          <CalculatorButton lable='del' onPress={() => { clean() }} text={true} ></CalculatorButton>
-          <CalculatorButton lable='<=' onPress={() => { deletNumber() }} text={true}></CalculatorButton>
+          <CalculatorButton label='del' onPress={() => { clean() }} second={true} ></CalculatorButton>
+          <CalculatorButton label='<=' onPress={() => { deletNumber() }} second></CalculatorButton>
         </View>
         <View style={styles.content}>
-          <CalculatorButton lable='1' onPress={() => { buildNumber("1") }}></CalculatorButton>
-          <CalculatorButton lable='2' onPress={() => { buildNumber("2") }}></CalculatorButton>
-          <CalculatorButton lable='3' onPress={() => { buildNumber("3") }}></CalculatorButton>
-          <CalculatorButton lable='+' onPress={() => { suma() }}></CalculatorButton>
+          <CalculatorButton label='1' onPress={() => { buildNumber("1") }}></CalculatorButton>
+          <CalculatorButton label='2' onPress={() => { buildNumber("2") }}></CalculatorButton>
+          <CalculatorButton label='3' onPress={() => { buildNumber("3") }}></CalculatorButton>
+          <CalculatorButton label='+' onPress={() => { suma() }}></CalculatorButton>
         </View>
         <View style={styles.content}>
-          <CalculatorButton lable='4' onPress={() => { buildNumber("4") }}></CalculatorButton>
-          <CalculatorButton lable='5' onPress={() => { buildNumber("5") }}></CalculatorButton>
-          <CalculatorButton lable='6' onPress={() => { buildNumber("6") }}></CalculatorButton>
-          <CalculatorButton lable='-' onPress={() => { resta() }}></CalculatorButton>
+          <CalculatorButton label='4' onPress={() => { buildNumber("4") }}></CalculatorButton>
+          <CalculatorButton label='5' onPress={() => { buildNumber("5") }}></CalculatorButton>
+          <CalculatorButton label='6' onPress={() => { buildNumber("6") }}></CalculatorButton>
+          <CalculatorButton label='-' onPress={() => { resta() }}></CalculatorButton>
         </View>
         <View style={styles.content}>
-          <CalculatorButton lable='7' onPress={() => { buildNumber("7") }}></CalculatorButton>
-          <CalculatorButton lable='8' onPress={() => { buildNumber("8") }}></CalculatorButton>
-          <CalculatorButton lable='9' onPress={() => { buildNumber("9") }}></CalculatorButton>
-          <CalculatorButton lable='X' onPress={() => { multi() }}></CalculatorButton>
+          <CalculatorButton label='7' onPress={() => { buildNumber("7") }}></CalculatorButton>
+          <CalculatorButton label='8' onPress={() => { buildNumber("8") }}></CalculatorButton>
+          <CalculatorButton label='9' onPress={() => { buildNumber("9") }}></CalculatorButton>
+          <CalculatorButton label='X' onPress={() => { multi() }}></CalculatorButton>
         </View>
         <View style={styles.content}>
-          <CalculatorButton lable='0' onPress={() => { buildNumber("0") }}></CalculatorButton>
-          <CalculatorButton lable='.' onPress={() => { buildNumber(".") }}></CalculatorButton>
-          <CalculatorButton lable='=' onPress={() => { calculateResult() }}></CalculatorButton>
-          <CalculatorButton lable='/' onPress={() => { division() }}></CalculatorButton>
-          <StatusBar style="auto" />
+          <CalculatorButton label='0' onPress={() => { buildNumber("0") }}></CalculatorButton>
+          <CalculatorButton label='.' onPress={() => { buildNumber(".") }}></CalculatorButton>
+          <CalculatorButton label='=' onPress={() => { calculateResult() }}></CalculatorButton>
+          <CalculatorButton label='/' onPress={() => { division() }}></CalculatorButton>
         </View>
         <StatusBar style="auto" />
       </View>
@@ -115,6 +114,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderColor: '#9D0F02',
     marginVertical: 5,
-    alignItems:'flex-end'
+    textAlign: 'right'
   }
 });

@@ -20,6 +20,7 @@ export const useCalculator = () => {
     setNumber(number.slice(0, -1))
   }
   const lastNumber = () => {
+    if(number=='0' && lastOperation !=='div' )return;
 
     if (number.endsWith('.')) {
       setPrevNumber(number.slice(0, -1));
@@ -55,8 +56,8 @@ export const useCalculator = () => {
     setLastOperation("multi")
   }
   const division = () => {
+    if(number=='0')return;
     lastNumber()
-    if(prevNumber=='0')return;
 
     if (lastOperation !== "" ) {
       calculateResult();
@@ -65,7 +66,7 @@ export const useCalculator = () => {
     setLastOperation("div")
   }
   const subResult = () => {
-    if (lastOperation == "") return;
+    if (lastOperation == "" ) return;
 
     const num1 = Number(number);
     const num2 = Number(prevNumber);

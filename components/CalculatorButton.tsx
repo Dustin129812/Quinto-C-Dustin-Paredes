@@ -1,15 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, Pressable } from 'react-native';
 interface Props {
-  lable: string,
+  label: string,
   onPress: () => void,
-  text?: boolean
+  second?: boolean
 }
 
-export const CalculatorButton = ({ lable, onPress, text }: Props) => {
+export const CalculatorButton = ({ label, onPress, second }: Props) => {
   return (
-    <Pressable onPress={onPress} style={text ? styles.constentb : styles.content}>
-      <Text style={text ? styles.textb : styles.text}>{lable}</Text>
+    <Pressable onPress={onPress} style={({ pressed }) => ({
+      ...styles.content,
+      backgroundColor: second ? '#000000' : '#F1A739',
+      opacity: pressed ? 0.8 : 1,
+    })}>
+      <Text style={second ? styles.textb : styles.text}>{label}</Text>
     </Pressable>
   );
 }
@@ -19,25 +23,16 @@ const styles = StyleSheet.create({
     height: 52,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F1A739',
     borderRadius: 15,
     marginLeft: 5,
   },
   text: {
     color: '#000000',
-    fontSize:25
-  },
-  constentb: {
-    width: 60,
-    height: 45,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#000000',
-    borderRadius: 15,
-    marginLeft: 5,
+    fontSize: 25
   },
   textb: {
     color: '#FE0000'
-  }
+  },
+
 
 })
