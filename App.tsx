@@ -1,71 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { CalculatorButton } from './components/CalculatorButton';
-import { useCalculator } from './hooks/useCalculator';
+import { useState } from "react";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import GpsComponent from "./components/gps";
+import CameraScreen from "./components/camera";
+import MapScreen from "./components/mapa";
 
-export default function App() {
-  const {
-    number,
-    prevNumber,
-    simbol,
-    buildNumber,
-    suma,
-    resta,
-    division,
-    multi,
-    calculateResult,
-    clean,
-    deletNumber
-  } = useCalculator();
+export default function App() { 
+  const [camera,setCamera]=useState(false);
+  const buttonCamera=()=>{
+    if(camera)return setCamera(false)
+    return setCamera(true)
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={styles.app}>
-        <View style={styles.contentb}>
+    <ScrollView style={styles.container}>
+      <Pressable onPress={()=>buttonCamera()} style={{backgroundColor:'red' , padding:10}}><Text>Camara</Text></Pressable>
 
-          <Text style={styles.text}>{number}</Text>
-          {simbol && (<Text style={styles.textO}>{prevNumber} {simbol} {number}</Text>)}
-          <Text style={styles.textR} numberOfLines={1}>{prevNumber}</Text>
-        </View>
-        <View style={styles.content}>
-          <CalculatorButton label='del' onPress={() => { clean() }} second={true} ></CalculatorButton>
-          <CalculatorButton label='<=' onPress={() => { deletNumber() }} second></CalculatorButton>
-        </View>
-        <View style={styles.content}>
-          <CalculatorButton label='1' onPress={() => { buildNumber("1") }}></CalculatorButton>
-          <CalculatorButton label='2' onPress={() => { buildNumber("2") }}></CalculatorButton>
-          <CalculatorButton label='3' onPress={() => { buildNumber("3") }}></CalculatorButton>
-          <CalculatorButton label='+' onPress={() => { suma() }}></CalculatorButton>
-        </View>
-        <View style={styles.content}>
-          <CalculatorButton label='4' onPress={() => { buildNumber("4") }}></CalculatorButton>
-          <CalculatorButton label='5' onPress={() => { buildNumber("5") }}></CalculatorButton>
-          <CalculatorButton label='6' onPress={() => { buildNumber("6") }}></CalculatorButton>
-          <CalculatorButton label='-' onPress={() => { resta() }}></CalculatorButton>
-        </View>
-        <View style={styles.content}>
-          <CalculatorButton label='7' onPress={() => { buildNumber("7") }}></CalculatorButton>
-          <CalculatorButton label='8' onPress={() => { buildNumber("8") }}></CalculatorButton>
-          <CalculatorButton label='9' onPress={() => { buildNumber("9") }}></CalculatorButton>
-          <CalculatorButton label='X' onPress={() => { multi() }}></CalculatorButton>
-        </View>
-        <View style={styles.content}>
-          <CalculatorButton label='0' onPress={() => { buildNumber("0") }}></CalculatorButton>
-          <CalculatorButton label='.' onPress={() => { buildNumber(".") }}></CalculatorButton>
-          <CalculatorButton label='=' onPress={() => { calculateResult() }}></CalculatorButton>
-          <CalculatorButton label='/' onPress={() => { division() }}></CalculatorButton>
-        </View>
-        <StatusBar style="auto" />
-      </View>
-    </View >
+      <GpsComponent/>
+      
+      {camera &&<CameraScreen/>}
+
+      <MapScreen/>
+      
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingVertical:50
 
   },
   content: {
